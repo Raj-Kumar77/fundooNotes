@@ -23,13 +23,13 @@ const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        await new User({ name, email, password: hashedPassword }).save();
+        const newUser = await new User({ name, email, password: hashedPassword }).save();
 
-        res.status(201).json({ success: true, message: 'User created successfully' });
+        res.status(201).json({ success: true, message: 'User created successfully', user: newUser });
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message  });
     }
 };
 

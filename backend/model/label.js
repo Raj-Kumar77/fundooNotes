@@ -17,6 +17,6 @@ const LabelSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-const Label = mongoose.model('label', LabelSchema)
+const Label = mongoose.model('Label', LabelSchema)
 
 export default Label
